@@ -14,10 +14,15 @@
             <property name="mappers" value="com.study.util.MyMapper"/>
         </plugin>
 
-        <jdbcConnection driverClass="${druid.driver-class}"
-                        connectionURL="${druid.url}"
-                        userId="${druid.username}"
-                        password="${druid.password}">
+        <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
+                        connectionURL="${spring.datasource.url}"
+                        userId="${spring.datasource.username}"
+                        password="${spring.datasource.password}">
+            <!--MySQL 8.x 需要指定服务器的时区-->
+            <property name="serverTimezone" value="UTC"/>
+            <!--MySQL 不支持 schema 或者 catalog 所以需要添加这个-->
+            <!--参考 : http://www.mybatis.org/generator/usage/mysql.html-->
+            <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
 
         <javaModelGenerator targetPackage="com.study.model" targetProject="src/main/java"/>
