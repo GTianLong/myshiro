@@ -22,6 +22,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
     @Resource
     private UserService userService;
     @Resource
@@ -33,7 +34,7 @@ public class UserController {
                                      @RequestParam(required = false, defaultValue = "10") int length){
         Map<String,Object> map = new HashMap<>();
         PageInfo<User> pageInfo = userService.selectByPage(user, start, length);
-        System.out.println("pageInfo.getTotal():"+pageInfo.getTotal());
+//        System.out.println("pageInfo.getTotal():"+pageInfo.getTotal());
         map.put("draw",draw);
         map.put("recordsTotal",pageInfo.getTotal());
         map.put("recordsFiltered",pageInfo.getTotal());

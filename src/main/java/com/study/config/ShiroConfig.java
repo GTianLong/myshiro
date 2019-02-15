@@ -44,6 +44,9 @@ public class ShiroConfig {
     @Value("${spring.redis.password}")
     private String password;
 
+    @Value("${redis.expir}")
+    private int expir;
+
     @Bean
     public static LifecycleBeanPostProcessor getLifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
@@ -171,7 +174,7 @@ public class ShiroConfig {
         RedisManager redisManager = new RedisManager();
         redisManager.setHost(host);
         redisManager.setPort(port);
-        redisManager.setExpire(1800);// 配置缓存过期时间
+        redisManager.setExpire(expir);// 配置缓存过期时间,单位秒
         redisManager.setTimeout(timeout);
        // redisManager.setPassword(password);
         return redisManager;

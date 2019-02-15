@@ -7,6 +7,7 @@ import com.study.mapper.UserRoleMapper;
 import com.study.model.User;
 import com.study.model.UserRole;
 import com.study.service.UserService;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,9 @@ import java.util.List;
 public class UserServiceImpl extends BaseService<User> implements UserService{
     @Resource
     private UserRoleMapper userRoleMapper;
+
+    @Resource
+    private RedisTemplate<String,User> redisTemplate;
 
     @Override
     public PageInfo<User> selectByPage(User user, int start, int length) {

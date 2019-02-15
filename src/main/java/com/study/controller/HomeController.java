@@ -7,12 +7,15 @@ import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
@@ -21,9 +24,15 @@ import java.util.Map;
  */
 @Controller
 public class HomeController {
+
     @RequestMapping(value="/login",method= RequestMethod.GET)
     public String login(){
         return "login";
+    }
+
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public void loginOut(){
+        System.out.println("登出");
     }
 
     @RequestMapping(value="/login",method=RequestMethod.POST)

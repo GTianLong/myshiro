@@ -34,7 +34,7 @@ public class ResourcesController {
                                      @RequestParam(required = false, defaultValue = "10") int length){
         Map<String,Object> map = new HashMap<>();
         PageInfo<Resources> pageInfo = resourcesService.selectByPage(resources, start, length);
-        System.out.println("pageInfo.getTotal():"+pageInfo.getTotal());
+//        System.out.println("pageInfo.getTotal():"+pageInfo.getTotal());
         map.put("draw",draw);
         map.put("recordsTotal",pageInfo.getTotal());
         map.put("recordsFiltered",pageInfo.getTotal());
