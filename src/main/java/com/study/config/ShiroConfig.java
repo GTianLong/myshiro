@@ -93,7 +93,13 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/js/**","anon");
         filterChainDefinitionMap.put("/img/**","anon");
         filterChainDefinitionMap.put("/font-awesome/**","anon");
-        filterChainDefinitionMap.put("/swagger-ui.html","anon");
+        //swagger2
+        filterChainDefinitionMap.put("/swagger-ui.html", "anon");
+        filterChainDefinitionMap.put("/swagger-resources/**", "anon");
+        filterChainDefinitionMap.put("/v2/api-docs/**", "anon");
+        filterChainDefinitionMap.put("/webjars/springfox-swagger-ui/**", "anon");
+
+
         filterChainDefinitionMap.put("/druid/**","anon");
 //        filterChainDefinitionMap.put("/druid/**","druid");
         //<!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
