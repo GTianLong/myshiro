@@ -82,13 +82,19 @@ public class DruidConfig {
     @Value("${spring.datasource.logSlowSql}")
     private String logSlowSql;
 
+    @Value("${druid.loginname}")
+    private String druidLoginName;
+
+    @Value("${druid.password}")
+    private String druidPassWord;
+
     @Bean
     public ServletRegistrationBean druidServlet() {
         ServletRegistrationBean reg = new ServletRegistrationBean();
         reg.setServlet(new StatViewServlet());
         reg.addUrlMappings("/druid/*");
-        reg.addInitParameter("loginUsername", username);
-        reg.addInitParameter("loginPassword", password);
+        reg.addInitParameter("loginUsername", druidLoginName);
+        reg.addInitParameter("loginPassword", druidPassWord);
         reg.addInitParameter("logSlowSql", logSlowSql);
         return reg;
     }
